@@ -12,18 +12,20 @@
 
         <label for="image-picker">Choose your image for inference:</label>
 
-        <input id="image-picker" type="file" accept="video/*, image/*" alt="infer image" required/>
+        <input id="image-picker" type="file" accept="video/*, image/*" alt="infer image" required />
 
         <input type="button" value='Infer' onclick="handleClick(event)">
 
     </form>
     <hr/>
     <h2 id="loading" hidden>Inferring...</h2>
-    <div id="result" hidden>
-        <h2 hidden>Result</h2>
-        <p id="class">Class</p>
-        <p id="conf">Conf</p>
-        <p id="no">no of items</p>
-    </div>
+
+    <table id="predictionTable" hidden>
+        <tr>
+            <th>Class</th>
+            <th>Confidence</th>
+        </tr>
+
+    </table>
 </body>
 </html>

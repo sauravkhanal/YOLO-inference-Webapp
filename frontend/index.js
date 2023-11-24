@@ -1,5 +1,8 @@
 // import {infer} from './infer.js'
 // import {handlePrediction} from "./handle_prediction.js";
+const labels = ["Mahendreshwor Mahadev Temple", "Taleju Bhawani Temple", "Basantapur Bhawan", "Lalitpur Bhawan", "Hanuman Statue", "Jagannath Temple", "Gopinath Temple", "Shree Kal Bhairab", "Swet Bhairab", "Chasin Dega Temple", "Saraswoti Temple", "Bhagwati Temple", "Maju Dega", "Garuda Narayan Temple", "Kasthamandap", "Silyan Sata House", "Kageshwor Mahadev Temple", "Dhansa Temple", "Newroad Juddha Salik", "Nau Talle Durbar", "Gaddi Baithak", "Kumari Ghar", "Trrailokya Mohan Narayan Temple", "Garood Baahan : The Big Idol", "Bhuvaneshwor Mahadev Temple", "Kotilingeshwar Mahadev Temple", "Statue At Entrance", "Mahadev temple", "Gorakhnath Shrine", "Mahadev Chaitya", "Mahankal Temple"];
+
+
 async function handleClick(event) {
     //prevent page reload, infer, show predictions
     //prevent page reload
@@ -79,4 +82,29 @@ function handlePrediction (prediction){
     //prediction .display on result.div
     console.log (prediction);
     
+    const obj = JSON.parse(prediction)
+
+    const { num_detections, detections } = obj;
+    
+    // Display predictions in the table
+    const table = document.getElementById('predictionTable');
+
+    // Clear existing rows, excluding the header
+    while (table.rows.length > 1) {
+        table.deleteRow(1);
+    }
+
+    // Add new rows based on the predictions
+    for (let i = 0; i < num_detections; i++) {
+        const { cls, conf} = detections[i];
+        const row = table.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        cell1.textContent = labels[cls];
+        cell2.textContent = conf;
+    }
+
+    // Show the table
+    table.removeAttribute('hidden');
+
 }

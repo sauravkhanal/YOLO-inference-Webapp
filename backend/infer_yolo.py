@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 from pydantic import BaseModel
+import json
 
 # path declarations
 model_path = "./model/best.pt"
@@ -17,7 +18,7 @@ def infer(image):
     return convert_to_dict(results)
 
 
-def convert_to_dict(results) -> dict:
+def convert_to_dict(results) -> str:
     result_dict = DetectionsResult()
     for result in results:  # iterate through every detection but for now only one so redundant
         result_dict.num_detections = len(result.boxes)  # no of detected box
@@ -25,8 +26,7 @@ def convert_to_dict(results) -> dict:
         for i in range(result_dict.num_detections):  # iterate through every box
             result_dict.detections.append({
                 'cls': int(result.boxes[i].cls),
-                'conf': float(result.boxes[i].conf),
+                'conf': round(float(result.boxes[i].conf)*100, 2),
                 'box': [float(x) for x in list(result.boxes[i].xywh[0])]
             })
-    return result_dict.model_dump()
-
+    return json.dumps(result_dict.model_dump())

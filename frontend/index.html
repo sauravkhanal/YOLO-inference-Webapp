@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>upload image</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <h1>Upload file to get inference result</h1>
+    <form enctype="multipart/form-data">
+
+        <label for="image-picker">Choose your image for inference:</label>
+
+        <input id="image-picker" type="file" accept="video/*, image/*" alt="infer image" required/>
+
+        <input type="button" value='Infer' onclick="handleClick(event)">
+
+    </form>
+    <hr/>
+    <h2 id="loading" hidden>Inferring...</h2>
+    <div id="result" hidden>
+        <h2 hidden>Result</h2>
+        <p id="class">Class</p>
+        <p id="conf">Conf</p>
+        <p id="no">no of items</p>
+    </div>
+</body>
+</html>

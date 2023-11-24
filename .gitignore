@@ -1,0 +1,14 @@
+frontend/*
+backend/*
+.idea
+
+!frontend/*.css
+!frontend/*.html
+!frontend/index.js
+
+!backend/infer.py
+!backend/infer_yolo.py
+!backend/model
+
+!backend/requirements.txt
+!backend/all_requirements.txt

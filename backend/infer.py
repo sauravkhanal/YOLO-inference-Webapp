@@ -1,6 +1,5 @@
 import numpy as np
 from fastapi import FastAPI, UploadFile
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from infer_yolo import infer
 import cv2
@@ -24,25 +23,9 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"message": "You're here to infer"}
-
-
-class FilePath(BaseModel):
-    path: str
-
-
-@app.post("/infer_from_filePath/")
-async def infer_from_filepath(file_path: FilePath):
-    # infer here
-    return {"filepath": file_path.path}
-
-
-@app.post("/infer/")
-async def upload_file(file: UploadFile):
     return {
-        "filename": file.filename,
-        "size": file.size,
-        "type": file.content_type,
+        "statusCode": 200,
+        "message": "Kathmandu Durbar square heritage detection YOLO v8 API"
     }
 
 

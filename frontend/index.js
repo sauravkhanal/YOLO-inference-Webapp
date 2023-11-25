@@ -1,6 +1,6 @@
 // import {infer} from './infer.js'
 // import {handlePrediction} from "./handle_prediction.js";
-const labels = ["Mahendreshwor Mahadev Temple", "Taleju Bhawani Temple", "Basantapur Bhawan", "Lalitpur Bhawan", "Hanuman Statue", "Jagannath Temple", "Gopinath Temple", "Shree Kal Bhairab", "Swet Bhairab", "Chasin Dega Temple", "Saraswoti Temple", "Bhagwati Temple", "Maju Dega", "Garuda Narayan Temple", "Kasthamandap", "Silyan Sata House", "Kageshwor Mahadev Temple", "Dhansa Temple", "Newroad Juddha Salik", "Nau Talle Durbar", "Gaddi Baithak", "Kumari Ghar", "Trrailokya Mohan Narayan Temple", "Garood Baahan : The Big Idol", "Bhuvaneshwor Mahadev Temple", "Kotilingeshwar Mahadev Temple", "Statue At Entrance", "Mahadev temple", "Gorakhnath Shrine", "Mahadev Chaitya", "Mahankal Temple"];
+const labels = ["Akash Bhairab Temple", "Bhagwati Temple", "Bhuvaneshwor Mahadev Temple", "Chasin Dega Temple", "Degu Talle Temple", "Dhansa Temple", "Gaddi Baithak", "Gopinath Temple", "Gorakhnath Shrine", "Hanuman Temple", "Jagannath Temple", "Kageshwor Mahadev Temple", "Kasthamandap", "Kotilingeshwar Mahadev Temple", "Kumari Ghar", "Lalitpur Bhawan", "Mahadev Chaitya", "Mahadev temple", "Mahendreshwor Mahadev Temple", "Maju Dega", "Nau Talle Durbar", "Newroad Juddha Salik", "Shivalinga Temple", "Shree Kal Bhairab", "Shree Mahalaxmi Temple", "Silyan Sata House", "Statue At Entrance", "Swet Bhairab", "Taga Gan Bell", "Taleju Bhawani Temple", "Trrailokya Mohan Narayan Temple"]
 
 
 async function handleClick(event) {

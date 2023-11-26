@@ -31,6 +31,8 @@ check_make_dir(input_save_path, output_save_path)
 model_path = "./model/best.pt"
 yolo_model = YOLO(model_path, task='detect')
 
+api_endpoint = "https://yoloapi.khanalsaurav.com.np/getimage"
+
 
 class Box(BaseModel):
     x: float
@@ -109,8 +111,8 @@ def convert_to_json(results, output_image_url: str):
     )
 
 
-def generate_url(filename) -> str:
-    return filename
+def generate_url(timestamp) -> str:
+    return api_endpoint + "/" + timestamp
 
 
 def save_input(image) -> str:

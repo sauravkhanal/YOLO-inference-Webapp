@@ -2,8 +2,10 @@ import numpy as np
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
-from infer_yolo import infer
+from fastapi.responses import FileResponse
+from infer_yolo import infer, output_save_path
 import cv2
+import os
 
 app = FastAPI()
 
@@ -53,3 +55,13 @@ async def preprocess_image(file: UploadFile):
         image = cv2.resize(image, (640, 640))
 
     return image
+
+
+@app.get("/getimage/{image_name}")
+async def get_image(image_name: str):
+    image_path = output_save_path + "/" + image_name + ".jpg"
+
+    if os.path.exists(image_path):
+        return FileResponse(image_path, media_type="image/jpeg")
+    else:
+        return jsonable_encoder({"statusCode": 404, "message": "File not found"})

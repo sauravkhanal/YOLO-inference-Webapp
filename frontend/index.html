@@ -7,25 +7,31 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <h1>Upload file to get inference result</h1>
-    <form enctype="multipart/form-data">
+<h1 id="heroText">Upload file to get inference result</h1>
+<form enctype="multipart/form-data">
 
-        <label for="image-picker">Choose your image for inference:</label>
+    <label for="image-picker">Choose your image for inference:</label>
 
-        <input id="image-picker" type="file" accept="video/*, image/*" alt="infer image" required />
+    <input id="image-picker" type="file" accept="video/*, image/*" alt="infer image" required />
 
-        <input type="button" value='Infer' onclick="handleClick(event)">
+    <button  id="infer-btn" onclick="handleClick(event)">Infer</button>
 
-    </form>
-    <hr/>
-    <h2 id="loading" hidden>Inferring...</h2>
+</form>
 
+<!--    <button id="download-btn" hidden onclick="clickDownload()">Download Result image</button>-->
+<!--    <button id="showImg" hidden onclick="showImg()">view Image</button>-->
+<h2 id="loading" hidden>Inferring...</h2>
+
+<div id="result">
     <table id="predictionTable" hidden>
         <tr>
-            <th>Class</th>
+            <th>Class Number</th>
+            <th>Class Name</th>
             <th>Confidence</th>
         </tr>
 
     </table>
+    <img id="resultImage" src="" alt="inference result" hidden />
+</div>
 </body>
 </html>

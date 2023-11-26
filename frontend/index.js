@@ -1,7 +1,7 @@
 // import {infer} from './infer.js'
 // import {handlePrediction} from "./handle_prediction.js";
-const labels = ["Akash Bhairab Temple", "Bhagwati Temple", "Bhuvaneshwor Mahadev Temple", "Chasin Dega Temple", "Degu Talle Temple", "Dhansa Temple", "Gaddi Baithak", "Gopinath Temple", "Gorakhnath Shrine", "Hanuman Temple", "Jagannath Temple", "Kageshwor Mahadev Temple", "Kasthamandap", "Kotilingeshwar Mahadev Temple", "Kumari Ghar", "Lalitpur Bhawan", "Mahadev Chaitya", "Mahadev temple", "Mahendreshwor Mahadev Temple", "Maju Dega", "Nau Talle Durbar", "Newroad Juddha Salik", "Shivalinga Temple", "Shree Kal Bhairab", "Shree Mahalaxmi Temple", "Silyan Sata House", "Statue At Entrance", "Swet Bhairab", "Taga Gan Bell", "Taleju Bhawani Temple", "Trrailokya Mohan Narayan Temple"]
 
+// let lastPredictionURL
 
 async function handleClick(event) {
     //prevent page reload, infer, show predictions
@@ -23,18 +23,19 @@ async function handleClick(event) {
         //show inferring... text
         const result = document.getElementById('loading');
         result.style.display = 'block';
+        result.innerHTML = "inferring ..."
         
         console.log('about to predict')
         
         //now infer here
-        const prediction = await infer(formData);
+        const prediction_response = await infer(formData);
         
-        
+        document.getElementById('resultImage').style.display = 'block'
         result.innerHTML = "inference complete"
         
         
         console.log('prediction received')
-        handlePrediction(prediction);
+        handlePrediction(prediction_response);
     }
     else {
         alert("Please Choose a file first")
@@ -80,12 +81,15 @@ async function infer(formData){
 
 function handlePrediction (prediction){
     //prediction .display on result.div
-    console.log (prediction);
+    // console.log (prediction.json());
     
-    const obj = JSON.parse(prediction)
+    console.log(prediction)
+    console.log(prediction.data)
+    
+    
+    const {imageURL, numberOfDetection, detections } = prediction.data;
 
-    const { num_detections, detections } = obj;
-    
+    document.getElementById('resultImage').src = imageURL
     // Display predictions in the table
     const table = document.getElementById('predictionTable');
 
@@ -95,16 +99,26 @@ function handlePrediction (prediction){
     }
 
     // Add new rows based on the predictions
-    for (let i = 0; i < num_detections; i++) {
-        const { cls, conf} = detections[i];
+    for (let i = 0; i < numberOfDetection; i++) {
+        const { classNumber, name, confidence} = detections[i];
         const row = table.insertRow();
         const cell1 = row.insertCell(0);
         const cell2 = row.insertCell(1);
-        cell1.textContent = labels[cls];
-        cell2.textContent = conf;
+        const cell3 = row.insertCell(2)
+        cell1.textContent = classNumber;
+        cell2.textContent = name;
+        cell3.textContent = confidence;
     }
 
     // Show the table
     table.removeAttribute('hidden');
 
 }
+
+// async function clickDownload() {
+//     const anchor = document.createElement("a")
+//     anchor.href = lastPredictionURL;
+//     anchor.setAttribute('download',"yolo-prediction.jpg")
+// anchor.click()
+// }
+

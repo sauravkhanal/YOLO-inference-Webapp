@@ -57,7 +57,7 @@ def convert_to_json(results):
     for i in range(n):
         data = result.boxes[i]
 
-        box_value = [float(x) for x in list(result.boxes[i].xywh[0])]
+        box_value = [round(float(x), 2) for x in list(result.boxes[i].xywh[0])]
 
         detection_instance = Detection(
             classNumber=int(data.cls),

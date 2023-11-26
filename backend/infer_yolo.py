@@ -50,7 +50,7 @@ class Detection(BaseModel):
 
 # custom datatype for returning result of detection
 class DetectionResult(BaseModel):
-    imageUrl: str
+    imageURL: str
     numberOfDetection: int
     detections: list[Detection]
 
@@ -77,7 +77,7 @@ def convert_to_json(results, output_image_url: str):
 
     # all detection of one image
     detection_result = DetectionResult(
-        imageUrl=output_image_url,
+        imageURL=output_image_url,
         numberOfDetection=n,
         detections=[]
     )

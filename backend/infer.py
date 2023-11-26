@@ -1,6 +1,7 @@
 import numpy as np
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
 from infer_yolo import infer
 import cv2
 
@@ -23,10 +24,10 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {
+    return jsonable_encoder({
         "statusCode": 200,
         "message": "Kathmandu Durbar square heritage detection YOLO v8 API"
-    }
+    })
 
 
 @app.post("/inferyolo/")

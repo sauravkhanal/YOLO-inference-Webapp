@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 from pydantic import BaseModel
-import json
+from fastapi.encoders import jsonable_encoder
 
 # path declarations
 model_path = "./model/best.pt"
@@ -29,4 +29,4 @@ def convert_to_dict(results) -> str:
                 'conf': round(float(result.boxes[i].conf)*100, 2),
                 'box': [float(x) for x in list(result.boxes[i].xywh[0])]
             })
-    return json.dumps(result_dict.model_dump())
+    return jsonable_encoder(result_dict)

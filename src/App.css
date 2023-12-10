@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  /* width: 80vw; */
+  /* font-family: poppins; */
+  background-color: aliceblue;
+  text-align: center;
+}
+
+.imShow {
+  border: 2px solid black;
+  /* padding: 2rem; */
+  margin: 5rem 5rem 0rem 5rem;
+
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify content - for row
+  justify-content: space-around; 
+  align items to center in height
+  align-items: center;
+  align-content: space-between; */
+
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem 2rem; /*row gap and col gap*/
+  /* align-items: center; */
+
+  /* align grid inside of container */
+  justify-content: space-evenly; 
+
+  /* vertically align whole grid in container */
+  align-content:center;
+
+
+  align-items: center;
+  justify-items: center;
+
+  /* content for whole grid, self overrides content for individual item
+  items is individual grid component, justify means horizontally, align means vertically
+  */
+
+}
+
+/* * {
+  border: 1px solid red;
+} */
+
+* {
+  font-family: poppins;
+}

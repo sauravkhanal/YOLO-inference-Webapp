@@ -12,3 +12,4 @@ backend/*
 
 !backend/requirements.txt
 !backend/all_requirements.txt
+node_modules

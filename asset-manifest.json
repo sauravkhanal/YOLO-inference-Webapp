@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/YOLO-inference-webapp/static/css/main.01f75ff4.css",
+    "main.js": "/YOLO-inference-webapp/static/js/main.3a80c25d.js",
+    "static/media/b.jpg": "/YOLO-inference-webapp/static/media/b.b24aeaf94467f360da6b.jpg",
+    "static/media/a.jpg": "/YOLO-inference-webapp/static/media/a.f623190312292a12bf0b.jpg",
+    "index.html": "/YOLO-inference-webapp/index.html",
+    "main.01f75ff4.css.map": "/YOLO-inference-webapp/static/css/main.01f75ff4.css.map",
+    "main.3a80c25d.js.map": "/YOLO-inference-webapp/static/js/main.3a80c25d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01f75ff4.css",
+    "static/js/main.3a80c25d.js"
+  ]
+}

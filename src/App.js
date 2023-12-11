@@ -21,7 +21,10 @@ function App() {
       <div className='imShow'>
         <ImageCard imageUrl={userImg} imageName='uploadedImage' ></ImageCard>
         <ImageCard imageUrl={inferredImg} imageName='inferredImage' buttonName={"Download"} ></ImageCard>
-        <Button className='btn' variant='contained'> <>Select Image</></Button>
+
+        <input id='selectImage' type='file' accept='image/*'hidden />
+        <Button className='btn' variant='contained'><label htmlFor="selectImage">Select Image</label></Button>
+
         <Button className='btn' variant='contained' onClick={()=>handleDownload(inferredImg)}>Download Image</Button>
         {/* <Btn buttonName={"Upload image"}></Btn>
         <Btn buttonName={"Download image"} on></Btn> */}

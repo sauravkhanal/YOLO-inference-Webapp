@@ -19,7 +19,7 @@ function App() {
   const [rawImg, setRawImg] = useState();
 
   return (
-    <div onDrop={(event)=>dropHandler(event,setUserImg)} onDragOver={dragOverHandler}>
+    <div onDrop={(event)=>dropHandler(event,setUserImg,setRawImg)} onDragOver={dragOverHandler}>
 
       <div className='imShow'>
         <ImageCard imageUrl={userImg} imageName='uploadedImage' ></ImageCard>

@@ -1,4 +1,4 @@
-function dropHandler(event, setUserImg) {
+function dropHandler(event, setUserImg,setRawImg) {
     event.preventDefault()
     // console.log(event.dataTransfer)
 
@@ -6,6 +6,7 @@ function dropHandler(event, setUserImg) {
 
     if (droppedFiles.length > 0) {
         const droppedFile = droppedFiles[0] //if more than one file is dropped take one only
+        setRawImg(droppedFile)
         handleFile(droppedFile, setUserImg )
     }
 }

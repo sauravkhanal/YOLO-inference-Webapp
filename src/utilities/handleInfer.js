@@ -1,27 +1,19 @@
 import { apiEndpoint } from "../resources/config"
 
-export default async function handleInfer (formData,userImg, setInferredImg) {
-    //FIXME:
-    //TODO: how does form data and state of image of use state hook work
-        // const aformData = new FormData();
-
-
-}
-
-async function sendFetch(apiEndpoint, formData){
+async function sendFetch(formData) {
 
     console.log("send fetch")
 
-    try{
+    try {
         console.log("about to send fetch request")
         const response = await fetch(
-            apiEndpoint,{
-                method: 'POST',
-                body: formData,
-                // headers: {
-                //     'Content-Type': 'multipart/form-data',
-                // }
-            }
+            apiEndpoint, {
+            method: 'POST',
+            body: formData,
+            // headers: {
+            //     'Content-Type': 'multipart/form-data',
+            // }
+        }
         );
         console.log("Sent request")
         if (response.ok) {
@@ -33,9 +25,23 @@ async function sendFetch(apiEndpoint, formData){
             console.error('Error: ', response.statusText);
         }
         console.log("Checked if response was ok or no")
-    }catch (error) {
+    } catch (error) {
         console.log('catch error')
         console.error('Error: ', error.message);
     }
+
+}
+
+
+export default async function handleInfer(rawImg, setInferredImg) {
+    
+    const formData = new FormData();
+    formData.append('file', rawImg)
+    const response = await sendFetch(formData);
+    // console.log(response.data.imageURL)
+
+    setInferredImg(response.data.imageURL)
+
+
 }
 

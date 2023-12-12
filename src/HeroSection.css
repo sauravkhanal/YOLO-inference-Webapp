@@ -1,0 +1,42 @@
+.imShow {
+  margin: 5rem 5rem 0rem 5rem;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem 2rem; /*row gap and col gap*/
+  /* align-items: center; */
+
+  /* align grid inside of container */
+  justify-content: space-evenly; 
+
+  /* vertically align whole grid in container */
+  align-content:center;
+
+
+  align-items: center;
+  justify-items: center;
+
+  /* content for whole grid, self overrides content for individual item
+  items is individual grid component, justify means horizontally, align means vertically
+  */
+
+}
+
+.imShow > #inferBtn {
+  /* make infer btn take two grid columns to as to center it between images */
+  grid-column: span 2; 
+}
+
+/* * {
+  border: 1px solid red;
+} */
+
+
+@media only screen and (max-width: 768px) {
+  .imShow {
+    display: flex;
+    flex-direction: column;
+  }  
+
+}
+

@@ -1,14 +1,12 @@
 import './ImageCard.css'
 
-const ImageCard = ({imageUrl, imageName}) => {
+const ImageCard = ({imageUrl, imageName, imgText}) => {
 
     return (
-        <div className="imageCard">
+
             <div className="imageContainer">
-                <img src={imageUrl} alt={imageName} width={400} height={400}/>
-                {/* <img src={imageUrl} alt={imageName} draggable="false"/> */}
-            </div>
-            
+                <p id="imgText">{imgText}</p>
+                <img src={imageUrl} alt={imageName} width={400} height={400} draggable="false" />
         </div>
     );
 }

@@ -5,8 +5,32 @@
     border-radius: 1rem;
     /* border: 2px solid yellow; */
     overflow: hidden;
+    position: relative;
 }
 
+.imageContainer > p {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  /* padding: 1rem; */
+  background-color: #000000;
+  color: white;
+  /* z-index: 0; */
+  font-size: 1rem;
+  /* padding: 1rem; */
+  /* margin: 1rem; */
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0.5rem;
+  transition: transform 0.5s;
+}
+
+.imageContainer:hover {
+  #imgText{
+    background-color: rgb(187, 0, 0);
+    transition:0.3s;
+  }
+}
 img {
     object-fit: cover;
     /* max-width: 100%;

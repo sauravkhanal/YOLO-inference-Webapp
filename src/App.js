@@ -22,8 +22,8 @@ function App() {
     <div onDrop={(event)=>dropHandler(event,setUserImg,setRawImg)} onDragOver={dragOverHandler}>
 
       <div className='imShow'>
-        <ImageCard imageUrl={userImg} imageName='uploadedImage' ></ImageCard>
-        <ImageCard imageUrl={inferredImg} imageName='inferredImage' buttonName={"Download"} ></ImageCard>
+        <ImageCard imageUrl={userImg} imageName='uploadedImage' imgText='original'></ImageCard>
+        <ImageCard imageUrl={inferredImg} imageName='inferredImage' buttonName={"Download"} imgText='inferred'></ImageCard>
 
         <input id='selectImage' type='file' accept='image/*'  hidden onChange={(event)=>{setUserImg(URL.createObjectURL(event.target.files[0]));setRawImg(event.target.files[0])}}/>
         <Button className='btn' variant='contained'><label htmlFor="selectImage">Select Image</label></Button>

@@ -1,14 +1,17 @@
-const handleDownload = (inferredImage) => {
-    const downloadLink = document.createElement('a');
-    downloadLink.href = inferredImage;
+async function handleDownload(inferredImage) {
 
-    var currentDate = new Date();
-    downloadLink.download = 'YOLO_'+currentDate.toISOString().slice(0,19).replace('_','-').replace('T','_');
+    const response = await fetch(inferredImage);
+    const blob = await response.blob();
 
-    document.body.appendChild(downloadLink);
-    downloadLink.click()
+    const imgNameSplit = inferredImage.toString().split("/")
+    const imgName = imgNameSplit[imgNameSplit.length - 1]
 
-    document.body.removeChild(downloadLink)
+    // timeStamp = "x"
+
+    const anchorElement = document.createElement('a');
+    anchorElement.href = URL.createObjectURL(blob);
+    anchorElement.download = imgName;
+    anchorElement.click();
+
 }
-
 export default handleDownload

@@ -6,6 +6,7 @@ from fastapi.responses import FileResponse
 from infer_yolo import infer, output_save_path
 import cv2
 import os
+import math
 
 app = FastAPI()
 
@@ -49,12 +50,33 @@ async def preprocess_image(file: UploadFile):
     np_array = np.frombuffer(contents, np.uint8)
 
     # Decode the array into an OpenCV image
-    image = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
+    img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
 
-    if image.shape != (640, 640, ):
-        image = cv2.resize(image, (640, 640))
+    # if image.shape != (640, 640, ):
+    #     image = cv2.resize(image, (640, 640))
 
-    return image
+    # (height, width,) = image.shape
+    height = img.shape[0]
+    width = img.shape[1]
+
+    # resizes max of height or width to 640 and scales min one preserving aspect ratio.
+    if height > 800 or width > 800:
+        if height >= width:
+            new_width = int(width / (height / 640))
+            image = cv2.resize(img, (new_width, 640))
+            print(image.shape)
+        elif height <= width:
+            new_height = int(height / (width / 640))
+            image = cv2.resize(img, (640, new_height))
+            print(image.shape)
+        else:
+            image = cv2.resize(img, (640, 640))
+
+        print(f"original : {(height, width)} changed : {image.shape}")
+        return image
+
+    else:
+        return img
 
 
 @app.get("/getimage/{image_name}")

@@ -41,3 +41,4 @@ backend/*
 node_modules
 
 
+backend/all_requirements.txt

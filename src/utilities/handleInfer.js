@@ -33,7 +33,7 @@ async function sendFetch(formData) {
 }
 
 
-export default async function handleInfer(rawImg, setInferredImg) {
+export default async function handleInfer(rawImg, setInferredImg, setProgressVisible) {
     
     const formData = new FormData();
     formData.append('file', rawImg)
@@ -41,7 +41,6 @@ export default async function handleInfer(rawImg, setInferredImg) {
     // console.log(response.data.imageURL)
 
     setInferredImg(response.data.imageURL)
-
-
+    setProgressVisible(false)
 }
 

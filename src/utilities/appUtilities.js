@@ -1,4 +1,5 @@
 async function resize(imgBlob) {
+    console.log('inside resize')
     //resize largest dimension to 640, preserve aspect ratio
     const targetDimension = 640;
 
@@ -53,29 +54,23 @@ async function resize(imgBlob) {
     );
 }
 
-async function dropHandler(event, setUserImg, setRawImg) {
+async function uploadHandler(event, setUserImg, setRawImg) {
+
     event.preventDefault();
-    // console.log(event.dataTransfer)
 
-    const droppedFiles = event.dataTransfer.files; // is an array of all files
+    const droppedFile = event.type === 'change' ? event.target.files[0] : event.dataTransfer.files[0]
+    // const droppedFiles = event.dataTransfer.files; // is an array of all files
+    // [0] = only take single file
 
-    if (droppedFiles.length > 0) {
-        const droppedFile = droppedFiles[0]; //if more than 
-        // one file is dropped take one only
-        // setRawImg(droppedFile);
-        // console.log(droppedFile)
-
-        if (!droppedFile.type.startsWith("image/")) {
-            alert("Only image files are supported !");
-            return;
-        }
-        const newLink = await resize(droppedFile);
-        setRawImg(newLink)
-        // console.log(newLink)
-        
-        setUserImg(URL.createObjectURL(newLink));
-        // setUserImg(newLink);
+    if (!droppedFile.type.startsWith("image/")) {
+        alert("Only image files are supported !");
+        return;
     }
+    const newLink = await resize(droppedFile);
+    setRawImg(newLink)
+    setUserImg(URL.createObjectURL(newLink));
+
+
 }
 
 
@@ -86,4 +81,4 @@ function dragOverHandler(event) {
     event.preventDefault();
 }
 
-export { dragOverHandler, dropHandler };
+export { dragOverHandler, uploadHandler };

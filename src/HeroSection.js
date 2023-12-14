@@ -2,7 +2,7 @@ import './HeroSection.css';
 import { useState } from 'react';
 import ImageCard from './components/ImageCard.js';
 
-import { dragOverHandler, dropHandler } from './utilities/appUtilities.js'
+import { dragOverHandler, uploadHandler } from './utilities/appUtilities.js'
 import handleDownload from './utilities/handleDownload.js'
 import handleInfer from './utilities/handleInfer.js';
 
@@ -20,7 +20,7 @@ function HeroSection() {
   const [progressVisible, setProgressVisible] = useState(false)
 
   return (
-    <div className='imShow' onDrop={(event) => dropHandler(event, setUserImg, setRawImg)} onDragOver={dragOverHandler}>
+    <div className='imShow' onDrop={(event) =>{uploadHandler(event,setUserImg, setRawImg)}} onDragOver={dragOverHandler}>
 
       <ImageCard
         imageUrl={userImg}
@@ -45,7 +45,8 @@ function HeroSection() {
         id='selectImage'
         type='file'
         accept='image/*'
-        hidden onChange={(event) => { setUserImg(URL.createObjectURL(event.target.files[0])); setRawImg(event.target.files[0]) }}
+        hidden onChange={(event) => {uploadHandler(event,setUserImg, setRawImg); console.log('inside onchange')}
+      }
       />
 
       <Button

@@ -1,6 +1,6 @@
 import { apiEndpoint } from "../resources/config"
 
-async function sendFetch(formData) {
+async function sendFetch(formData, setProgressVisible) {
 
     console.log("send fetch")
 
@@ -23,24 +23,27 @@ async function sendFetch(formData) {
         else {
             console.log("response not ok")
             console.error('Error: ', response.statusText);
+            setProgressVisible(false)
         }
         console.log("Checked if response was ok or no")
     } catch (error) {
         console.log('catch error')
         console.error('Error: ', error.message);
+        setProgressVisible(false)
     }
 
 }
 
 
 export default async function handleInfer(rawImg, setInferredImg, setProgressVisible) {
-    
+
     const formData = new FormData();
     formData.append('file', rawImg)
-    const response = await sendFetch(formData);
+    const response = await sendFetch(formData, setProgressVisible);
     // console.log(response.data.imageURL)
 
     setInferredImg(response.data.imageURL)
     setProgressVisible(false)
+
 }
 

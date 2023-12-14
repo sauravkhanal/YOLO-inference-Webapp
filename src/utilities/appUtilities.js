@@ -10,14 +10,14 @@ async function resize(imgBlob) {
         const img = new Image();
         img.src = URL.createObjectURL(imgBlob);
         img.onload = () => {
+            var canvas = document.createElement("canvas");
             const imgWidth = img.width;
             const imgHeight = img.height;
+            var ctx = canvas.getContext("2d");
 
             if (imgWidth > 800 || imgHeight > 800) {
-                var canvas = document.createElement("canvas");
                 canvas.height = targetDimension;
                 canvas.width = targetDimension;
-                var ctx = canvas.getContext("2d");
 
                 if (imgHeight > imgWidth) {
                     const newWidth = imgWidth / (imgHeight / targetDimension);
@@ -35,10 +35,13 @@ async function resize(imgBlob) {
                 }
                 //alc to docs all browser support image/png , but mayn't image/jpg
                 //return url converting the canvas to png
-                resolve(canvas.toDataURL("image/png"));
+                canvas.toBlob((arg)=>resolve(arg));
             }
             else {
-                resolve(img.src)
+                canvas.height = imgHeight;
+                canvas.width = imgWidth;
+                ctx.drawImage(img, 0 , 0)
+                canvas.toBlob((blob)=>resolve(blob));
             }
         };
 
@@ -57,15 +60,21 @@ async function dropHandler(event, setUserImg, setRawImg) {
     const droppedFiles = event.dataTransfer.files; // is an array of all files
 
     if (droppedFiles.length > 0) {
-        const droppedFile = droppedFiles[0]; //if more than one file is dropped take one only
-        setRawImg(droppedFile);
+        const droppedFile = droppedFiles[0]; //if more than 
+        // one file is dropped take one only
+        // setRawImg(droppedFile);
+        // console.log(droppedFile)
 
         if (!droppedFile.type.startsWith("image/")) {
             alert("Only image files are supported !");
             return;
         }
         const newLink = await resize(droppedFile);
-        setUserImg(newLink);
+        setRawImg(newLink)
+        // console.log(newLink)
+        
+        setUserImg(URL.createObjectURL(newLink));
+        // setUserImg(newLink);
     }
 }
 

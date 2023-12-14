@@ -25,7 +25,9 @@ function HeroSection() {
       <ImageCard
         imageUrl={userImg}
         imageName='uploadedImage'
-        imgText='original'>
+        imgText='original'
+        placeholder='Drop your image here'
+        >
       </ImageCard>
 
       <div id='infImg'>
@@ -33,7 +35,9 @@ function HeroSection() {
           imageUrl={inferredImg}
           imageName='inferredImage'
           buttonName={"Download"}
-          imgText='inferred'>
+          imgText='inferred'
+          placeholder= 'Click infer to see result here'
+          >
         </ImageCard>
       </div>
 

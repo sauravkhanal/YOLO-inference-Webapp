@@ -1,0 +1,23 @@
+.about {
+    text-align: center;
+}
+
+.aboutText {
+    text-decoration: none;
+    text-align: justify;
+}
+
+#aboutContainer {
+    height: 100vh;
+    width: 80vw;
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+#mainDiv {
+    background-color: rgb(255, 186, 186);
+}

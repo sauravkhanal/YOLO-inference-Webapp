@@ -1,10 +1,16 @@
 body {
-  margin: 1rem;
+  margin: 0;
   box-sizing: border-box;
   padding: 0;
-  background-color: aliceblue;
+  background-color: rgb(219, 236, 251);
 }
 
 * {
   font-family: Poppins;
+}
+html {
+    scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
 }

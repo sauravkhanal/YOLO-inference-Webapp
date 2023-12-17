@@ -8,8 +8,16 @@ const App = () => {
     return (
         <>
             <section id='first'>
+
+                <div>
+
                 <MuiNavbar />
-                <HeroSection />
+                </div>
+
+                <div id="firstHero">
+                    <HeroSection />
+                </div>
+
             </section>
 
             <section>

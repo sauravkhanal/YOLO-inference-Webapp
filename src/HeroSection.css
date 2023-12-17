@@ -20,7 +20,7 @@
   items is individual grid component, justify means horizontally, align means vertically
   */
 
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .imShow > #inferBtn {

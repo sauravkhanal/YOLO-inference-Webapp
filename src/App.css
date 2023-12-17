@@ -28,3 +28,26 @@ section {
 #firstHero {
   margin:auto auto;
 }
+
+.coverMessage {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 50vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  color:white;
+}
+
+.coverMessage > a {
+  color:white
+}
+
+@media (max-width: 900px) {
+  .coverMessage {
+    display: block;
+  }
+}

@@ -31,7 +31,11 @@ const App = () => {
             <section>
                 <About />
             </section>
-
+            
+            {/* Cover for smaller screens */}
+            <div className="coverMessage"><p>Sorry, not yet configured for smaller screens.</p>
+                <a href="https://github.com/sauravkhanal/yolo-inference-webapp">view source Code</a>
+            </div>
         </>
     )
 }

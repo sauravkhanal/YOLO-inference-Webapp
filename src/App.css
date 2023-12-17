@@ -10,7 +10,15 @@ body {
 }
 html {
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 section {
+  height: 100vh;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+#first{
+  scroll-margin-top: 64px;
+  height: calc(100vh-64px);
 }

@@ -1,29 +1,29 @@
 import HeroSection from "./HeroSection"
 import './App.css'
 
-// import Header from './components/Header.js';
 import { MuiNavbar } from "./components/MuiNavbar.js";
-// import { Dummy1, Dummy2 } from "./components/Dummy.js";
-import { About } from './components/descriptions.js'
+import { About, HowTo, Features } from './components/descriptions.js'
 
 const App = () => {
     return (
         <>
-            <section id="hero">
+            <section id='first'>
                 <MuiNavbar />
                 <HeroSection />
             </section>
 
-            {/* <Header/> */}
-            {/* <Dummy1/> */}
-
             <section>
-                <About /> 
+                <HowTo />
             </section>
 
-            {/* <section>
-                <Dummy2 />
-            </section> */}
+            <section>
+                <Features></Features>
+            </section>
+
+            <section>
+                <About />
+            </section>
+
         </>
     )
 }

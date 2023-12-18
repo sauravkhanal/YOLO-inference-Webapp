@@ -22,19 +22,15 @@ const HowTo = () => {
                 <ol className='text'>
                     <li>
                         <strong>Upload Your Image:</strong>
-                        <p>Begin by dragging and dropping your image onto the site or click the "Select Image" button to choose a file from your device.</p>
+                        <p>Drag and drop your image or click "Select Image" to choose a file from your device.</p>
                     </li>
                     <li>
                         <strong>Initiate Inference:</strong>
-                        <p>Once your image is selected, hit the "Infer" button. Your image is then sent to our server for swift analysis.</p>
-                    </li>
-                    <li>
-                        <strong>Watch the Magic Unfold:</strong>
-                        <p>Sit back as our YOLOv8 model processes your image, revealing heritage sites with detailed bounding boxes and confidence scores. The results will be displayed in the window.</p>
+                        <p>Hit the "Infer" button after selecting your image. It will be sent to our server for swift analysis.</p>
                     </li>
                     <li>
                         <strong>Download the Story:</strong>
-                        <p>Want to keep a record of your discoveries? Click the "Download Image" button to save the inferred image, complete with bounding boxes and confidence scores.</p>
+                        <p>Click "Download Image" to save the inferred image, complete with bounding boxes and confidence scores, if you want to keep a record of your discoveries.</p>
                     </li>
                 </ol>
 
@@ -50,20 +46,20 @@ const Features = () => {
                 <h2 className='head'>Features</h2>
                 <ol className='text'>
                     <li>
-                        <strong>Image-Based Heritage Detection:</strong>
-                        <p>Our application accepts images in any format and size, providing you with flexibility in choosing the source material. Whether it's a high-resolution photograph or a quick snapshot, our system is designed to handle it seamlessly.</p>
+                        <strong>Image Flexibility:</strong>
+                        <p>Submit images of any format or size for heritage detection, ensuring seamless handling.</p>
                     </li>
                     <li>
                         <strong>Real-time Inference:</strong>
-                        <p>Experience the thrill of real-time inference as our YOLOv8 model processes your images on the fly. Watch as the application swiftly identifies heritage sites, delivering results in a matter of seconds.</p>
+                        <p>Experience instant heritage site identification with our YOLOv8 model for swift results.</p>
                     </li>
                     <li>
-                        <strong>Bounding Boxes and Confidence Scores:</strong>
-                        <p>Visualize the precision of our heritage detection with bounding boxes outlining each identified site. Confidence scores accompany the results, providing insights into the reliability of the model's predictions.</p>
+                        <strong>Precision Visualization:</strong>
+                        <p>View identified heritage sites with precision through bounding boxes and confidence scores.</p>
                     </li>
                     <li>
-                        <strong>Downloadable Results:</strong>
-                        <p>Capture your heritage discoveries by downloading the results. Inferred images, complete with bounding boxes and confidence scores, can be saved for further exploration or shared with others.</p>
+                        <strong>Downloadable Discoveries:</strong>
+                        <p>Save your inferred discoveries by downloading them.</p>
                     </li>
                 </ol>
 

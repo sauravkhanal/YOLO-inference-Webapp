@@ -15,7 +15,7 @@ html {
 }
 
 section {
-  height: 100vh;
+  height: 100svh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -46,8 +46,12 @@ section {
   color:white
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .coverMessage {
     display: block;
   }
+} */
+
+#heroMobile {
+  margin-top: 5rem;
 }

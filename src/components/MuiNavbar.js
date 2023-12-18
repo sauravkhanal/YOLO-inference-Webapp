@@ -12,7 +12,7 @@ const theme = createTheme({
     },
     stack: {
         display: {
-            xs: 'none', sm: 'block', md: 'block', lg: 'block', xl: 'block'
+            xs: 'none', sm: 'none', md: 'block', lg: 'block', xl: 'block'
         }
     }
 })
@@ -44,19 +44,19 @@ export const MuiNavbar = () => {
                         <Button color='inherit' href='#HowTo'>How to use ?</Button>
                         <Button color='inherit' href="#Features">Features</Button>
                         <Button color='inherit' href='#About'>About</Button>
-                        <Button color='inherit' href='https://www.github.com/sauravkhanal/yolo-inference-webapp' target='_blank' startIcon={<GitHubIcon/>}>
-                        View Code
+                        <Button color='inherit' href='https://www.github.com/sauravkhanal/yolo-inference-webapp' target='_blank' startIcon={<GitHubIcon />}>
+                            View Code
                         </Button>
                     </Stack>
 
                     <IconButton
-                        sx={{ display: { sm: 'none', xs: 'block' } }}
+                        sx={{ display: { sm: 'block', xs: 'block', md: 'none' } }}
                         color='inherit' onClick={openMenu} edge='start'>
                         <MenuIcon />
                     </IconButton>
 
                     <Menu
-                        sx={{ display: { xs: 'flex', sm: 'none' } }}
+                        sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}
                         open={Boolean(anchorNav)}
                         onClose={closeMenu}
                         anchorOrigin={{
@@ -69,7 +69,7 @@ export const MuiNavbar = () => {
                             <MenuItem component='a' href='#HowTo' onClick={closeMenu}>How to Use?</MenuItem>
                             <MenuItem component='a' href='#Features' onClick={closeMenu}>Features</MenuItem>
                             <MenuItem component='a' href='#About' onClick={closeMenu}>About</MenuItem>
-                            <MenuItem component='a' href='https://github.com/sauravkhanal/yolo-inference-webapp'onClick={closeMenu}target='_blank'><GitHubIcon/>&nbsp;View Code</MenuItem>
+                            <MenuItem component='a' href='https://github.com/sauravkhanal/yolo-inference-webapp' onClick={closeMenu} target='_blank'><GitHubIcon />&nbsp;View Code</MenuItem>
 
                         </MenuList>
 

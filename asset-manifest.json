@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/YOLO-inference-webapp/static/css/main.93f6b52a.css",
-    "main.js": "/YOLO-inference-webapp/static/js/main.40819035.js",
+    "main.js": "/YOLO-inference-webapp/static/js/main.1b241c21.js",
     "static/media/b.jpg": "/YOLO-inference-webapp/static/media/b.b24aeaf94467f360da6b.jpg",
     "static/media/a.jpg": "/YOLO-inference-webapp/static/media/a.f623190312292a12bf0b.jpg",
     "static/media/poppins-devanagari-400-normal.woff": "/YOLO-inference-webapp/static/media/poppins-devanagari-400-normal.0e11b62db931f85340d4.woff",
@@ -14,10 +14,10 @@
     "static/media/poppins-latin-ext-400-normal.woff2": "/YOLO-inference-webapp/static/media/poppins-latin-ext-400-normal.4f38b4331448d2313adc.woff2",
     "index.html": "/YOLO-inference-webapp/index.html",
     "main.93f6b52a.css.map": "/YOLO-inference-webapp/static/css/main.93f6b52a.css.map",
-    "main.40819035.js.map": "/YOLO-inference-webapp/static/js/main.40819035.js.map"
+    "main.1b241c21.js.map": "/YOLO-inference-webapp/static/js/main.1b241c21.js.map"
   },
   "entrypoints": [
     "static/css/main.93f6b52a.css",
-    "static/js/main.40819035.js"
+    "static/js/main.1b241c21.js"
   ]
 }

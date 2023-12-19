@@ -1,4 +1,5 @@
 import './ImageCard.css'
+import image1 from '../images/a.jpg'
 
 const ImageCard = ({imageUrl, imageName, imgText, height, width}) => {
 
@@ -6,7 +7,7 @@ const ImageCard = ({imageUrl, imageName, imgText, height, width}) => {
 
             <div className="imageContainer">
                 <p id="imgText">{imgText}</p>
-                <img src={imageUrl} alt={imageName} width={width || 400} height={height || 400} draggable="false" />
+                <img src={imageUrl || image1} alt={imageName} width={width || 400} height={height || 400} draggable="false" />
         </div>
     );
 }

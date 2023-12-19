@@ -6,28 +6,36 @@ import { dragOverHandler, uploadHandler } from './utilities/appUtilities.js'
 import handleDownload from './utilities/handleDownload.js'
 import handleInfer from './utilities/handleInfer.js';
 
-import { Button, CircularProgress } from '@mui/material'
+import { Button, CircularProgress, Snackbar, Alert } from '@mui/material'
 
-import image1 from './images/a.jpg'
+
 import image2 from './images/b.jpg'
 
 
 
 function HeroSection() {
-  const [userImg, setUserImg] = useState(image1);
+  const [userImg, setUserImg] = useState(false);
   const [inferredImg, setInferredImg] = useState(image2)
   const [rawImg, setRawImg] = useState();
   const [progressVisible, setProgressVisible] = useState(false)
 
+  const [isAlertOpen, setAlert] = useState(false)
+  const handleAlertClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setAlert(false)
+  }
+
   return (
-    <div className='imShow' onDrop={(event) =>{uploadHandler(event,setUserImg, setRawImg)}} onDragOver={dragOverHandler}>
+    <div className='imShow' onDrop={(event) => { uploadHandler(event, setUserImg, setRawImg) }} onDragOver={dragOverHandler}>
 
       <ImageCard
         imageUrl={userImg}
         imageName='uploadedImage'
         imgText='original'
         placeholder='Drop your image here'
-        >
+      >
       </ImageCard>
 
       <div id='infImg'>
@@ -36,8 +44,8 @@ function HeroSection() {
           imageName='inferredImage'
           buttonName={"Download"}
           imgText='inferred'
-          placeholder= 'Click infer to see result here'
-          >
+          placeholder='Click infer to see result here'
+        >
         </ImageCard>
       </div>
 
@@ -45,8 +53,8 @@ function HeroSection() {
         id='selectImage'
         type='file'
         accept='image/*'
-        hidden onChange={(event) => {uploadHandler(event,setUserImg, setRawImg); console.log('inside onchange')}
-      }
+        hidden onChange={(event) => { uploadHandler(event, setUserImg, setRawImg); console.log('inside onchange') }
+        }
       />
 
       <Button
@@ -63,12 +71,28 @@ function HeroSection() {
         id='inferBtn'
         variant='contained'
         color='secondary'
-        onClick={() => {setProgressVisible(true);handleInfer(rawImg, setInferredImg, setProgressVisible)}}
+        onClick={() => {
+          if (!Boolean(userImg)) {
+            setAlert(true)
+            return
+          }
+          setProgressVisible(true);
+          handleInfer(rawImg, setInferredImg, setProgressVisible)
+        }}
       >
-        Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit'/>}
+        Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
       </Button>
 
-
+      <Snackbar
+        open={isAlertOpen}
+        autoHideDuration={5000}
+        onClose={handleAlertClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleAlertClose} severity='warning'>
+          Please Select an image first!
+        </Alert>
+      </Snackbar>
     </div>
   )
 

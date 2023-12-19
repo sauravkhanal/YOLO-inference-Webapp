@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import ImageCard from './ImageCard.js';
+// import ImageCard from './ImageCard.js';
 
 import { uploadHandler } from '../utilities/appUtilities.js';
 
 import handleDownload from '../utilities/handleDownload.js'
 import handleInfer from '../utilities/handleInfer.js';
 
-import { Button, CircularProgress } from '@mui/material'
+import { Snackbar, Alert, Button, CircularProgress } from '@mui/material'
 
-import init from '../images/demo.png'
 import calc from '../images/calc.png'
 
 import ImgCard from './Card.js';
@@ -16,11 +15,19 @@ import ImgCard from './Card.js';
 
 function HeroSectionMobile() {
     const width = 300
-    const [userImg, setUserImg] = useState(init);
+    const [userImg, setUserImg] = useState(null);
     const [inferredImg, setInferredImg] = useState(calc)
     const [rawImg, setRawImg] = useState();
     const [progressVisible, setProgressVisible] = useState(false)
     const [showInferred, setShowInferred] = useState(false)
+
+    const [isAlertOpen, setAlert] = useState(false)
+    const handleAlertClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return
+        }
+        setAlert(false)
+    }
 
     const Buttons = () => {
         return (
@@ -45,11 +52,32 @@ function HeroSectionMobile() {
                     id='inferBtn'
                     variant='contained'
                     color='secondary'
-                    onClick={() => { setProgressVisible(true);handleInfer(rawImg, setInferredImg, setProgressVisible);setShowInferred(true) }}
+                    onClick={() => {
+
+                        if (!Boolean(userImg)) {
+                            setAlert(true)
+                            return
+                        }
+
+                        setProgressVisible(true);
+                        handleInfer(rawImg, setInferredImg, setProgressVisible);
+                        setShowInferred(true)
+                    }
+                    }
                 >
                     Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
                 </Button>
 
+                <Snackbar
+                    open={isAlertOpen}
+                    autoHideDuration={5000}
+                    onClose={handleAlertClose}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                >
+                    <Alert onClose={handleAlertClose} severity='warning'>
+                        Please Select an image first!
+                    </Alert>
+                </Snackbar>
             </>
         )
     }

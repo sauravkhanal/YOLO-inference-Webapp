@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material'
+import { Card, CardMedia} from '@mui/material'
+import init from '../images/demo.png'
 
 
 const ImgCard = ({ imageUrl, imageName, imgText, widths, heights }) => {
@@ -10,7 +11,7 @@ const ImgCard = ({ imageUrl, imageName, imgText, widths, heights }) => {
             <Card sx={{ width: widths, height: heights, margin: 'auto auto', borderRadius: 5 }}>
                 <CardMedia
                     component={'img'}
-                    image={imageUrl}
+                    image={imageUrl || init}
                     alt={imgText}
                     title={imageName}
                     sx={{

@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive";
 
 
 const App = () => {
-    const isMobile = useMediaQuery({ maxWidth: 900 })
+    const isMobile = useMediaQuery({ maxWidth: 768 })
     return (
         <>
             <section id='first'>

@@ -8,10 +8,11 @@ import handleInfer from '../utilities/handleInfer.js';
 
 import { Snackbar, Alert, Button, CircularProgress } from '@mui/material'
 
-import calc from '../images/calc.png'
+import calc from '../images/calc.jpg'
 
 import ImgCard from './Card.js';
 
+import './HeroSectionMobile.css'
 
 function HeroSectionMobile() {
     const width = 300
@@ -32,47 +33,50 @@ function HeroSectionMobile() {
     const Buttons = () => {
         return (
             <>
-                <div style={{ display: 'flex' }}>
+                <div className='btn-container'>
 
-                    <Button
-                        className='btn'
-                        id='selectImg'
-                        variant='contained'>
-                        <label htmlFor="selectImage">Select Image</label>
-                    </Button>
+                        <Button
+                            className='btn'
+                            id='btn-selectImg'
+                            variant='contained'
+                        >
+                            <label htmlFor="selectImage">Select Image</label>
+                        </Button>
 
-                    <div>&nbsp;&nbsp;</div>
+                        <Button
 
-                    <Button className='btn' variant='contained' onClick={() => handleDownload(inferredImg)}>Download</Button>
+                            className='btn'
+                            id='btn-infer'
+                            variant='contained'
+                            color='secondary'
+                            onClick={() => {
+
+                                if (!Boolean(userImg)) {
+                                    setAlert(true)
+                                    return
+                                }
+
+                                setProgressVisible(true);
+                                handleInfer(rawImg, setInferredImg, setProgressVisible);
+                                setShowInferred(true)
+                            }
+                            }
+                        >
+                            Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
+                        </Button>
+
+
+                    {/* <div>&nbsp;&nbsp;</div> */}
+
+                        <Button className='btn' id='btn-download' variant='contained' onClick={() => handleDownload(inferredImg)}>Download</Button>
 
                 </div>
-
-                <Button
-                    className='btn'
-                    id='inferBtn'
-                    variant='contained'
-                    color='secondary'
-                    onClick={() => {
-
-                        if (!Boolean(userImg)) {
-                            setAlert(true)
-                            return
-                        }
-
-                        setProgressVisible(true);
-                        handleInfer(rawImg, setInferredImg, setProgressVisible);
-                        setShowInferred(true)
-                    }
-                    }
-                >
-                    Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
-                </Button>
 
                 <Snackbar
                     open={isAlertOpen}
                     autoHideDuration={5000}
                     onClose={handleAlertClose}
-                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                 >
                     <Alert onClose={handleAlertClose} severity='warning'>
                         Please Select an image first!
@@ -83,7 +87,7 @@ function HeroSectionMobile() {
     }
 
     return (
-        <div className='imShow' >
+        <div className='imShowMob' >
 
             {showInferred ? (
                 <>
@@ -126,8 +130,6 @@ function HeroSectionMobile() {
                 hidden onChange={(event) => { uploadHandler(event, setUserImg, setRawImg); }
                 }
             />
-
-
 
         </div>
     )

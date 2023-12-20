@@ -28,8 +28,8 @@
     background-color: rgba(123, 31, 162, 0.3);
 }
 
-/* @media screen and (max-width:1000px) {
-    li > p{
-        display: none;
+@media screen and (max-width:768px) {
+    p{
+        font-size: small;
     }
-} */
+}

@@ -14,6 +14,7 @@ import image2 from './images/b.jpg'
 
 
 function HeroSection() {
+  const imageSize = { width: 350, height: 350}
   const [userImg, setUserImg] = useState(false);
   const [inferredImg, setInferredImg] = useState(image2)
   const [rawImg, setRawImg] = useState();
@@ -34,7 +35,8 @@ function HeroSection() {
         imageUrl={userImg}
         imageName='uploadedImage'
         imgText='original'
-        placeholder='Drop your image here'
+        height={imageSize.height}
+        width={imageSize.width}
       >
       </ImageCard>
 
@@ -42,9 +44,9 @@ function HeroSection() {
         <ImageCard
           imageUrl={inferredImg}
           imageName='inferredImage'
-          buttonName={"Download"}
           imgText='inferred'
-          placeholder='Click infer to see result here'
+          height={imageSize.height}
+          width={imageSize.width}
         >
         </ImageCard>
       </div>

@@ -1,9 +1,6 @@
 import React from 'react'
-
-
 import { Card, CardMedia} from '@mui/material'
-import init from '../images/demo.png'
-
+import init from '../images/demo.jpg'
 
 const ImgCard = ({ imageUrl, imageName, imgText, widths, heights }) => {
     return (
@@ -17,7 +14,7 @@ const ImgCard = ({ imageUrl, imageName, imgText, widths, heights }) => {
                     sx={{
                         borderBottomLeftRadius: 0,
                         borderBottomRightRadius: 0,
-                        objectFit: 'cover',
+                        objectFit: 'contain',
                         height: heights,
                         width: widths
                     }}

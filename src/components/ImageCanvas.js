@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import img from '../images/a.jpg';
 
-const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
-  const canvasRef = useRef(null);
+var ImageCanvas = ({ canvasWidth, canvasHeight, imgURL, imgText }) => {
+  var canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
+    var canvas = canvasRef.current;
+    var context = canvas.getContext('2d');
 
     let currentZoomLevel = 1;
     let isDragging = false;
@@ -22,9 +22,9 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
     let canvasCenterY;
 
     const ZOOMINLEVEL = 1.2;
-    const ZOOMOUTLEVEL = 0.8;
-    const MINZOOMLEVEL = 0.5;
-    const MAXZOOMLEVEL = 15;
+    const ZOOMOUTLEVEL = 0.9;
+    const MINZOOMLEVEL = 0.7;
+    const MAXZOOMLEVEL = 1.5;
     const DEFAULTCURSOR = 'move';
     const MOUSEDOWNCURSOR = 'grab';
     const ZOOMINCURSOR = 'zoom-in';
@@ -65,9 +65,14 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
       canvas.addEventListener('mouseup', onMouseUp);
       canvas.addEventListener('wheel', onWheel);
       canvas.addEventListener('mouseout', onMouseOut);
-      document.getElementById('reset').addEventListener('click', function () {
-        reset();
-      });
+      const resetButtons = document.getElementsByClassName('reset');
+
+      for (const button of resetButtons) {
+        button.addEventListener('click', function () {
+          reset();
+        });
+      }
+      
     }
 
     function onMouseOut() {
@@ -81,7 +86,7 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
     }
 
     function getTransformedPoint(x, y) {
-      const originalPoint = new DOMPoint(x, y);
+      var originalPoint = new DOMPoint(x, y);
       return context.getTransform().invertSelf().transformPoint(originalPoint);
     }
 
@@ -136,7 +141,7 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
 
 
 
-    const image = new Image();
+    var image = new Image();
 
     image.src = imgURL || img;
 
@@ -150,7 +155,7 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
       addEventListeners();
     };
   }, [imgURL]);
-  const pStyle = {
+  var pStyle = {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -162,16 +167,18 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
     },
   };
 
-  const containerStyle = {
+  var containerStyle = {
     position: 'relative',
     height: canvasHeight,
     width: canvasWidth,
-    border: '1px solid black',
+    // border: '1px solid black',
+    borderRadius:20,
+    boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'
   };
   return (
-    <div id="canvas-container" style={containerStyle}>
-      <p style={pStyle}>#text</p>
-      <button id="reset" style={{ position: 'absolute', top: 0, right: 0 }}>
+    <div id="canvas-container" style={{...containerStyle}}>
+      <p style={pStyle}>&nbsp;{imgText}&nbsp;</p>
+      <button className="reset" style={{ position: 'absolute', top: 18, right: 0 }}>
         ⟲
       </button>
       <canvas
@@ -179,7 +186,7 @@ const ImageCanvas = ({ canvasWidth, canvasHeight, imgURL }) => {
         ref={canvasRef}
         height={canvasHeight}
         width={canvasWidth}
-        style={{ border: '1px dotted red' }}
+        style={{ borderRadius:20}}
       ></canvas>
     </div>
   );

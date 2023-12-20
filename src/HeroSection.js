@@ -30,29 +30,36 @@ function HeroSection() {
   return (
     <div className='imShow' onDrop={(event) => { uploadHandler(event, setUserImg, setRawImg) }} onDragOver={dragOverHandler}>
 
-      <ImageCard
+      {/* <ImageCard
         imageUrl={userImg}
         imageName='uploadedImage'
         imgText='original'
         placeholder='Drop your image here'
       >
-      </ImageCard>
+      </ImageCard> */}
 
       <ImageCanvas
         canvasWidth={400}
         canvasHeight={400}
         imgURL={userImg}
+        imgText={'original'}
       />
 
       <div id='infImg'>
-        <ImageCard
+        {/* <ImageCard
           imageUrl={inferredImg}
           imageName='inferredImage'
           buttonName={"Download"}
           imgText='inferred'
           placeholder='Click infer to see result here'
         >
-        </ImageCard>
+        </ImageCard> */}
+        <ImageCanvas
+        canvasWidth={400}
+        canvasHeight={400}
+        imgURL={inferredImg}
+        imgText={'inferred'}
+      />
       </div>
 
       <input

@@ -5,7 +5,7 @@ const About = () => {
 
     return (
         <div id='About'>
-            <div class='container'>
+            <div className='container'>
                 <h2 className='head'>About</h2>
                 <p className='text'>
                     Welcome to our Heritage Detection website for <strong>Kathmandu Durbar Square!</strong> Explore the rich cultural tapestry of this historic site by simply uploading a photo or capturing one on your mobile device. Our cutting-edge YOLOv8 model swiftly analyzes the image, revealing detected heritage sites with detailed bounding boxes and confidence scores. Uncover the past effortlessly with our intuitive platform, connecting you to the captivating heritage of Kathmandu Durbar Square in a click.</p>
@@ -17,7 +17,7 @@ const About = () => {
 const HowTo = () => {
     return (
         <div id="HowTo">
-            <div class="container">
+            <div className="container">
                 <h2 className='head'>How to use?</h2>
                 <ol className='text'>
                     <li>
@@ -42,7 +42,7 @@ const HowTo = () => {
 const Features = () => {
     return (
         <div id="Features">
-            <div class="container">
+            <div className="container">
                 <h2 className='head'>Features</h2>
                 <ol className='text'>
                     <li>

@@ -7,7 +7,7 @@ import handleDownload from './utilities/handleDownload.js'
 import handleInfer from './utilities/handleInfer.js';
 
 import { Button, CircularProgress, Snackbar, Alert } from '@mui/material'
-
+import ImageCanvas from './components/ImageCanvas.js';
 
 import image2 from './images/b.jpg'
 
@@ -37,6 +37,12 @@ function HeroSection() {
         placeholder='Drop your image here'
       >
       </ImageCard>
+
+      <ImageCanvas
+        canvasWidth={400}
+        canvasHeight={400}
+        imgURL={userImg}
+      />
 
       <div id='infImg'>
         <ImageCard

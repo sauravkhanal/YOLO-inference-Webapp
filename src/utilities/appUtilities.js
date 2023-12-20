@@ -66,7 +66,8 @@ async function uploadHandler(event, setUserImg, setRawImg) {
         alert("Only image files are supported !");
         return;
     }
-    const newLink = await resize(droppedFile);
+    // const newLink = await resize(droppedFile);
+    const newLink = droppedFile;
     setRawImg(newLink)
     setUserImg(URL.createObjectURL(newLink));
 

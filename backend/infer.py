@@ -24,6 +24,7 @@ app.add_middleware(
 )
 
 
+
 @app.get("/")
 def root():
     return jsonable_encoder({
@@ -33,11 +34,11 @@ def root():
 
 
 @app.post("/inferyolo/")
-async def infer_yolo(file: UploadFile):
+async def infer_yolo(model_name: str, file: UploadFile):
     image = await preprocess_image(file)
     # image_array = infer(image)
     # return result.model_dump()
-    return infer(image)
+    return infer(model_name, image)
 
 
 async def preprocess_image(file: UploadFile):
@@ -62,3 +63,13 @@ async def get_image(image_name: str):
         return FileResponse(image_path, media_type="image/jpeg")
     else:
         return jsonable_encoder({"statusCode": 404, "message": "File not found"})
+
+
+@app.get("/getmodels")
+async def get_models():
+    model_dir = "./model/"
+    models = os.listdir(model_dir)
+    return jsonable_encoder({
+        "statusCode": 200,
+        "message": models
+    })

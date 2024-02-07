@@ -28,10 +28,10 @@ output_save_path = image_save_path + "/output"
 
 check_make_dir(input_save_path, output_save_path)
 
-model_path = "./model/best.pt"
-yolo_model = YOLO(model_path, task='detect')
+# model_path = "./model/best.pt"
+# yolo_model = YOLO(model_path, task='detect')
 
-api_endpoint = "https://yoloapi.khanalsaurav.com.np/getimage"
+api_endpoint = "http://localhost:5252"
 
 
 class Box(BaseModel):
@@ -61,8 +61,12 @@ class ReturnDict(BaseModel):
     data: DetectionResult
 
 
-def infer(image):
+def infer(model_name, image):
     timestamp = save_input(image)
+
+    model_path = f'./model/{model_name}'
+    yolo_model = YOLO(model_path, task='detect')
+
     results = yolo_model.predict(source=image)
     output_image_url = save_output(results, timestamp)
     return convert_to_json(results, output_image_url)
@@ -112,7 +116,7 @@ def convert_to_json(results, output_image_url: str):
 
 
 def generate_url(timestamp) -> str:
-    return api_endpoint + "/" + timestamp
+    return api_endpoint + "/" + timestamp + ".jpg"
 
 
 def save_input(image) -> str:

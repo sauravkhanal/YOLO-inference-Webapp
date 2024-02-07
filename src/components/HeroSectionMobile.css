@@ -5,3 +5,9 @@
     justify-content: center;
 
 }
+
+.second-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}

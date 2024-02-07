@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import { apiEndpoint } from "../resources/config"
 
 async function sendFetch(formData, setProgressVisible, modelName) {
@@ -24,13 +25,15 @@ async function sendFetch(formData, setProgressVisible, modelName) {
         else {
             console.log("response not ok")
             console.error('Error: ', response.statusText);
-            setProgressVisible(false)
+            return false
+            // setProgressVisible(false)
         }
         console.log("Checked if response was ok or no")
     } catch (error) {
         console.log('catch error')
         console.error('Error: ', error.message);
-        setProgressVisible(false)
+        return false
+        // setProgressVisible(false)
     }
 
 }
@@ -44,8 +47,14 @@ export default async function handleInfer(rawImg, setInferredImg, setProgressVis
     const response = await sendFetch(formData, setProgressVisible, modelName);
     // console.log(response.data.imageURL)
 
-    setInferredImg(response.data.imageURL)
     setProgressVisible(false)
+    if (response) {
+        setInferredImg(response.data.imageURL)
+    }
 
+    else {
+        // Alert()
+        window.alert("Request invalid")
+    }
 }
 

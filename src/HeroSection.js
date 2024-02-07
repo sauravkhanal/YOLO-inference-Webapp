@@ -1,5 +1,5 @@
 import './HeroSection.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ImageCard from './components/ImageCard.js';
 
 import { dragOverHandler, uploadHandler } from './utilities/appUtilities.js'
@@ -10,15 +10,17 @@ import { Button, CircularProgress, Snackbar, Alert } from '@mui/material'
 
 
 import image2 from './images/b.jpg'
+import ModelChooser from './components/ModelChooser.jsx';
 
 
 
 function HeroSection() {
-  const imageSize = { width: 350, height: 350}
+  const imageSize = { width: 350, height: 350 }
   const [userImg, setUserImg] = useState(false);
   const [inferredImg, setInferredImg] = useState(image2)
   const [rawImg, setRawImg] = useState();
   const [progressVisible, setProgressVisible] = useState(false)
+  const [model, setModel] = useState('')
 
   const [isAlertOpen, setAlert] = useState(false)
   const handleAlertClose = (event, reason) => {
@@ -68,6 +70,9 @@ function HeroSection() {
 
       <Button className='btn' variant='contained' onClick={() => handleDownload(inferredImg)}>Download Image</Button>
 
+      <div className='model'>
+        <ModelChooser onSelectModel={setModel} />
+      </div>
       <Button
         className='btn'
         id='inferBtn'
@@ -79,10 +84,10 @@ function HeroSection() {
             return
           }
           setProgressVisible(true);
-          handleInfer(rawImg, setInferredImg, setProgressVisible)
+          handleInfer(rawImg, setInferredImg, setProgressVisible, model)
         }}
       >
-        Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
+        Infer "{model}" {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
       </Button>
 
       <Snackbar
@@ -95,6 +100,7 @@ function HeroSection() {
           Please Select an image first!
         </Alert>
       </Snackbar>
+
     </div>
   )
 

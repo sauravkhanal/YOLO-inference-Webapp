@@ -5,7 +5,7 @@ async function sendFetch(formData, setProgressVisible, modelName) {
     // console.log("send fetch")
 
     try {
-        console.log("about to send fetch request")
+        // console.log("about to send fetch request")
         const queryParams = new URLSearchParams({ model_name: modelName });
         const url = `${apiEndpoint}?${queryParams}`;
         const response = await fetch(url, {

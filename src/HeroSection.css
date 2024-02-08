@@ -28,3 +28,6 @@
   grid-column: 1 / span 2; 
 }
 
+.model {
+  grid-column: 1 / span 2; 
+}

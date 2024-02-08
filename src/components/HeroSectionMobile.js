@@ -13,6 +13,7 @@ import calc from '../images/calc.jpg'
 import ImgCard from './Card.js';
 
 import './HeroSectionMobile.css'
+import ModelChooser from './ModelChooser.jsx';
 
 function HeroSectionMobile() {
     const width = 300
@@ -21,6 +22,7 @@ function HeroSectionMobile() {
     const [rawImg, setRawImg] = useState();
     const [progressVisible, setProgressVisible] = useState(false)
     const [showInferred, setShowInferred] = useState(false)
+    const [model, setModel] = useState('')
 
     const [isAlertOpen, setAlert] = useState(false)
     const handleAlertClose = (event, reason) => {
@@ -34,15 +36,20 @@ function HeroSectionMobile() {
         return (
             <>
                 <div className='btn-container'>
+            <div className='second-container'>
 
                         <Button
                             className='btn'
                             id='btn-selectImg'
                             variant='contained'
-                        >
+                            >
                             <label htmlFor="selectImage">Select Image</label>
                         </Button>
-
+                        <Button className='btn' id='btn-download' variant='contained' onClick={() => handleDownload(inferredImg)}>Download</Button>
+                            </div>
+                        <div className='model'>
+                    <ModelChooser onSelectModel={setModel} />
+                </div>
                         <Button
 
                             className='btn'
@@ -57,18 +64,18 @@ function HeroSectionMobile() {
                                 }
 
                                 setProgressVisible(true);
-                                handleInfer(rawImg, setInferredImg, setProgressVisible);
+                                handleInfer(rawImg, setInferredImg, setProgressVisible, model);
                                 setShowInferred(true)
                             }
                             }
                         >
-                            Infer {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
-                        </Button>
+                        Infer "{model}" {progressVisible && <span>&nbsp;&nbsp;</span>}{progressVisible && <CircularProgress size={'1rem'} color='inherit' />}
+                    </Button>
 
 
                     {/* <div>&nbsp;&nbsp;</div> */}
 
-                        <Button className='btn' id='btn-download' variant='contained' onClick={() => handleDownload(inferredImg)}>Download</Button>
+
 
                 </div>
 

@@ -116,7 +116,7 @@ def convert_to_json(results, output_image_url: str):
 
 
 def generate_url(timestamp) -> str:
-    return api_endpoint + "/" + timestamp + ".jpg"
+    return api_endpoint + "/" + timestamp
 
 
 def save_input(image) -> str:

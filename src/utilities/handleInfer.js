@@ -1,12 +1,11 @@
-import { Alert } from "@mui/material";
 import { apiEndpoint } from "../resources/config"
 
 async function sendFetch(formData, setProgressVisible, modelName) {
 
-    console.log("send fetch")
+    // console.log("send fetch")
 
     try {
-        console.log("about to send fetch request")
+        // console.log("about to send fetch request")
         const queryParams = new URLSearchParams({ model_name: modelName });
         const url = `${apiEndpoint}?${queryParams}`;
         const response = await fetch(url, {
@@ -17,20 +16,20 @@ async function sendFetch(formData, setProgressVisible, modelName) {
             // }
         }
         );
-        console.log("Sent request")
+        // console.log("Sent request")
         if (response.ok) {
-            console.log("response ok")
+            // console.log("response ok")
             return await response.json(); // return prediction result
         }
         else {
-            console.log("response not ok")
+            // console.log("response not ok")
             console.error('Error: ', response.statusText);
             return false
             // setProgressVisible(false)
         }
-        console.log("Checked if response was ok or no")
+        // console.log("Checked if response was ok or no")
     } catch (error) {
-        console.log('catch error')
+        // console.log('catch error')
         console.error('Error: ', error.message);
         return false
         // setProgressVisible(false)
@@ -45,7 +44,7 @@ export default async function handleInfer(rawImg, setInferredImg, setProgressVis
     // formData.append('model_name', modelName)
     formData.append('file', rawImg)
     const response = await sendFetch(formData, setProgressVisible, modelName);
-    // console.log(response.data.imageURL)
+    console.log(response)
 
     setProgressVisible(false)
     if (response) {

@@ -57,7 +57,7 @@ function HeroSection() {
         id='selectImage'
         type='file'
         accept='image/*'
-        hidden onChange={(event) => { uploadHandler(event, setUserImg, setRawImg); console.log('inside onchange') }
+        hidden onChange={(event) => { uploadHandler(event, setUserImg, setRawImg); }
         }
       />
 

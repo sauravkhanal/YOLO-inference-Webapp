@@ -1,5 +1,5 @@
 async function resize(imgBlob) {
-    console.log('inside resize')
+    // console.log('inside resize')
     //resize largest dimension to 640, preserve aspect ratio
     const targetDimension = 640;
 
@@ -58,9 +58,17 @@ async function uploadHandler(event, setUserImg, setRawImg) {
 
     event.preventDefault();
 
-    const droppedFile = event.type === 'change' ? event.target.files[0] : event.dataTransfer.files[0]
-    // const droppedFiles = event.dataTransfer.files; // is an array of all files
-    // [0] = only take single file
+    // Check if files were selected
+    if (event.type === 'change' && event.target.files.length === 0) {
+        // alert("No file selected!");
+        return;
+    } 
+    // else if (event.type === 'drop' && event.dataTransfer.files.length === 1) {
+    //     // alert("No file dropped!");
+    //     return;
+    // }
+
+    const droppedFile = event.type === 'change' ? event.target.files[0] : event.dataTransfer.files[0];
 
     if (!droppedFile.type.startsWith("image/")) {
         alert("Only image files are supported !");

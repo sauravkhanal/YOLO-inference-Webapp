@@ -31,7 +31,7 @@ check_make_dir(input_save_path, output_save_path)
 # model_path = "./model/best.pt"
 # yolo_model = YOLO(model_path, task='detect')
 
-api_endpoint = "https://yoloapi1.khanalsaurav.com.np/getimage"
+api_endpoint = "https://yoloapi.khanalsaurav.com.np/getimage"
 
 
 class Box(BaseModel):
